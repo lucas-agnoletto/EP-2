@@ -23,3 +23,5 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
             i += 1
 
     return lista_posicoes
+
+print ('2')
