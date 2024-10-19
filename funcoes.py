@@ -23,5 +23,36 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
             i += 1
 
     return lista_posicoes
+def preenche_frota (frota,nome,linha,coluna,orientacao,tamanho):
+    i = 0
+    posicoes = []
+    if nome not in frota:
+        frota[nome] = posicoes
+        if orientacao == 'vertical':
+            lista = []
 
-print ('2')
+            while i < tamanho:
+                lista.append([(linha+i),coluna])
+                i += 1
+            posicoes.append(lista)
+        else:
+            lista = []
+            while i < tamanho:
+                lista.append([linha,(coluna+i)])
+                i += 1
+            posicoes.append(lista)
+    else:
+        if orientacao == 'vertical':
+            lista = []
+            while i < tamanho:
+                lista.append([(linha+i),coluna])
+                i += 1
+            frota[nome].append(lista)
+        else:
+            lista = []
+            while i < tamanho:
+                lista.append([linha,(coluna+i)])
+                i += 1
+                posicoes.append(lista)
+            frota[nome].append(lista)
+    return frota
