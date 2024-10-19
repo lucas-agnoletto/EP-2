@@ -3,8 +3,6 @@ linha = 2
 coluna = 4
 orientacao = 'vertical'
 tamanho = 3
-
-
 def define_posicoes(linha, coluna, orientacao, tamanho):
     
     lista_posicoes = [[]]*tamanho
@@ -25,8 +23,9 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
     return lista_posicoes
 def preenche_frota (frota,nome,linha,coluna,orientacao,tamanho):
     i = 0
-    posicoes = []
+    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
     if nome not in frota:
+        posicoes = []
         frota[nome] = posicoes
         if orientacao == 'vertical':
             lista = []
