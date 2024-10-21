@@ -23,3 +23,50 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
             i += 1
 
     return lista_posicoes
+
+def preenche_frota (frota,nome,linha,coluna,orientacao,tamanho):
+    i = 0
+    posicoes = define_posicoes(linha, coluna, orientacao, tamanho)
+    if nome not in frota:
+        posicoes = []
+        frota[nome] = posicoes
+        if orientacao == 'vertical':
+            lista = []
+
+            while i < tamanho:
+                lista.append([(linha+i),coluna])
+                i += 1
+            posicoes.append(lista)
+        else:
+            lista = []
+            while i < tamanho:
+                lista.append([linha,(coluna+i)])
+                i += 1
+            posicoes.append(lista)
+    else:
+        if orientacao == 'vertical':
+            lista = []
+            while i < tamanho:
+                lista.append([(linha+i),coluna])
+                i += 1
+            frota[nome].append(lista)
+        else:
+            lista = []
+            while i < tamanho:
+                lista.append([linha,(coluna+i)])
+                i += 1
+                posicoes.append(lista)
+            frota[nome].append(lista)
+    return frota
+
+def faz_jogada(tabuleiro, linha, coluna):
+    i = linha
+    j = coluna
+
+    if tabuleiro[i][j] == 1:
+        tabuleiro[i][j] = 'X'
+
+    elif tabuleiro[i][j] == 0:
+        tabuleiro[i][j] = '-'
+
+    return tabuleiro
