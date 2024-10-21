@@ -3,8 +3,6 @@ linha = 2
 coluna = 4
 orientacao = 'vertical'
 tamanho = 3
-
-
 def define_posicoes(linha, coluna, orientacao, tamanho):
     
     lista_posicoes = [[]]*tamanho
