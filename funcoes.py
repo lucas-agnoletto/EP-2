@@ -80,3 +80,16 @@ def posiciona_frota(infnavios):
                 posx = posiçaao[1]
                 grid[posy][posx] = 1
     return grid
+def afundados (embarcacao,tabuleiro):
+    ponto = 0
+    for nome,posicoes in embarcacao.items():
+        for posicao in posicoes:
+            morto = True
+            for x in posicao:
+                posy= x[0]
+                posx = x[1]
+                if tabuleiro[posy][posx]!= 'X':
+                    morto = False
+            if morto == True:
+                ponto += 1
+    return ponto
