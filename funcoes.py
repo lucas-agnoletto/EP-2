@@ -68,3 +68,15 @@ def faz_jogada(tabuleiro, linha, coluna):
         tabuleiro[i][j] = '-'
 
     return tabuleiro
+def posiciona_frota(infnavios):
+    grid = []
+    for tabuleiro in range(0,10):
+        tabuleiro = [0]*10
+        grid.append(tabuleiro)
+    for nome,posições in infnavios.items():
+        for posição in posições:
+            for posiçaao in posição:
+                posy = posiçaao[0]
+                posx = posiçaao[1]
+                grid[posy][posx] = 1
+    return grid
