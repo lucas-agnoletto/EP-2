@@ -68,6 +68,7 @@ def faz_jogada(tabuleiro, linha, coluna):
         tabuleiro[i][j] = '-'
 
     return tabuleiro
+
 def posiciona_frota(infnavios):
     grid = []
     for tabuleiro in range(0,10):
@@ -80,6 +81,7 @@ def posiciona_frota(infnavios):
                 posx = posiçaao[1]
                 grid[posy][posx] = 1
     return grid
+
 def afundados (embarcacao,tabuleiro):
     ponto = 0
     for nome,posicoes in embarcacao.items():
@@ -93,3 +95,68 @@ def afundados (embarcacao,tabuleiro):
             if morto == True:
                 ponto += 1
     return ponto
+
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+
+    if frota == {}:
+
+        lista_posicoes = [[]]*tamanho
+        lista_posicoes[0] = [linha, coluna]
+
+        if orientacao == 'vertical':
+            i = 1
+            while(i < tamanho):
+                lista_posicoes[i] = [linha + i, coluna]
+                i += 1
+
+        if orientacao == 'horizontal':
+            i = 1
+            while(i < tamanho):
+                lista_posicoes[i] = [linha, coluna + i]
+                i += 1
+
+        i = 0
+        while(i < len(lista_posicoes)):
+
+            if lista_posicoes[i][0] > 9 or lista_posicoes[i][1] > 9:
+                return False
+            
+            if lista_posicoes[i][0] < 0 or lista_posicoes[i][1] < 0:
+                return False
+            
+            i += 1
+
+        
+    for embarcacao, posicoes in frota.items():
+        for posicao in posicoes:
+
+            lista_posicoes = [[]]*tamanho
+            lista_posicoes[0] = [linha, coluna]
+
+            if orientacao == 'vertical':
+                i = 1
+                while(i < tamanho):
+                    lista_posicoes[i] = [linha + i, coluna]
+                    i += 1
+
+            if orientacao == 'horizontal':
+                i = 1
+                while(i < tamanho):
+                    lista_posicoes[i] = [linha, coluna + i]
+                    i += 1
+
+            i = 0
+            while(i < len(lista_posicoes)):
+
+                if lista_posicoes[i][0] > 9 or lista_posicoes[i][1] > 9:
+                    return False
+                
+                if lista_posicoes[i][0] < 0 or lista_posicoes[i][1] < 0:
+                    return False
+                
+                if lista_posicoes[i] in posicao:
+                    return False
+                
+                i += 1
+    
+    return True
